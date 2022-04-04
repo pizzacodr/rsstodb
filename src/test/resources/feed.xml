@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generator="podbean/5.5" -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:spotify="http://www.spotify.com/ns/rss" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:media="http://search.yahoo.com/mrss/">
+
+    <channel>
+        <title>Buford Road Baptist Church</title>
+        <atom:link href="https://feed.podbean.com/brbcpodcast/feed.xml" rel="self" type="application/rss+xml" />
+        <link>https://brbcpodcast.podbean.com</link>
+        <description>Sermons by Dr. Tony Kohout, senior pastor of Buford Road
+			Baptist Church, along with guest speakers.</description>
+        <pubDate>Sun, 03 Apr 2022 13:00:00 -0400</pubDate>
+        <generator>https://podbean.com/?v=5.5</generator>
+        <language>en</language>
+        <spotify:countryOfOrigin>us</spotify:countryOfOrigin>
+        <copyright>Copyright 2022 All rights reserved.</copyright>
+        <category>Religion &amp; Spirituality:Christianity</category>
+        <ttl>1440</ttl>
+        <itunes:type>episodic</itunes:type>
+        <itunes:subtitle>Enrich Your Life...</itunes:subtitle>
+        <itunes:summary>Buford Road Baptist Church is a community of believers
+			who are committed and dedicated to sharing the gospel of our Lord and
+			Savior Jesus Christ.</itunes:summary>
+        <itunes:author>Buford Road Baptist Church</itunes:author>
+        <itunes:category text="Religion &amp; Spirituality">
+            <itunes:category text="Christianity" />
+        </itunes:category>
+        <itunes:category text="Religion &amp; Spirituality" />
+        <itunes:owner>
+            <itunes:name>Buford Road Baptist Church</itunes:name>
+            <itunes:email>bufordroadbaptistchurchpodcast+podbean@gmail.com
+			</itunes:email>
+        </itunes:owner>
+        <itunes:block>No</itunes:block>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="https://pbcdn1.podbean.com/imglogo/image-logo/12481150/brbcLogo1500B_8puznw.png" />
+        <image>
+            <url>https://pbcdn1.podbean.com/imglogo/image-logo/12481150/brbcLogo1500B_8puznw.png</url>
+            <title>Buford Road Baptist Church</title>
+            <link>https://brbcpodcast.podbean.com</link>
+            <width>144</width>
+            <height>144</height>
+        </image>
+        <item>
+            <title>Until We Reach our Homeland</title>
+            <itunes:title>Until We Reach our Homeland</itunes:title>
+            <link>https://brbcpodcast.podbean.com/e/until-we-reach-our-homeland/</link>
+            <comments>https://brbcpodcast.podbean.com/e/until-we-reach-our-homeland/#comments</comments>
+            <pubDate>Sun, 03 Apr 2022 13:00:00 -0400</pubDate>
+            <guid isPermaLink="false">brbcpodcast.podbean.com/6fbe6cc7-dbab-36e8-85a4-133526e42ac9</guid>
+            <description>
+                <![CDATA[<p>Sunday morning sermon by pastor Tony Kohout on June 27, 2021.</p>
+]]>
+            </description>
+            <content:encoded>
+                <![CDATA[<p>Sunday morning sermon by pastor Tony Kohout on June 27, 2021.</p>
+]]>
+            </content:encoded>
+
+            <enclosure url="https://mcdn.podbean.com/mf/web/3u9tzv/SundayTonyCitinzenshipInHeavenUntilWeReachOurHomeland-2021-06-27.mp3" length="20006607" type="audio/mpeg" />
+            <itunes:subtitle>Sunday morning sermon by pastor Tony Kohout on June
+				27, 2021.</itunes:subtitle>
+            <itunes:summary>
+                <![CDATA[<p>Sunday morning sermon by pastor Tony Kohout on June 27, 2021.</p>
+]]>
+            </itunes:summary>
+            <itunes:author>Buford Road Baptist Church</itunes:author>
+            <itunes:explicit>no</itunes:explicit>
+            <itunes:block>No</itunes:block>
+            <itunes:duration>42:46</itunes:duration>
+            <itunes:episode>175</itunes:episode>
+            <itunes:episodeType>full</itunes:episodeType>
+        </item>
+    </channel>
+</rss>
