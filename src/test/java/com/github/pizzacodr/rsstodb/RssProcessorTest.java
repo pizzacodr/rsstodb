@@ -1,17 +1,21 @@
 package com.github.pizzacodr.rsstodb;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.rometools.rome.io.FeedException;
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
@@ -24,15 +28,8 @@ class RssProcessorTest {
 	
 	private WireMockServer wireMockServer = new WireMockServer();
 	
-	interface ConfigFileTest extends ConfigFile {
-
-		@Override
-		@DefaultValue("http://localhost:8080/feed.xml")
-		public String feedUrl();
-	}
-	
 	@Test
-	void testProcessFeed() throws IOException, IllegalArgumentException, SQLException, FeedException, InterruptedException {
+	void testProcessFeed(@TempDir Path tempDir) throws IOException, IllegalArgumentException, SQLException, FeedException, InterruptedException {
 		
 		wireMockServer.start();
 
@@ -48,10 +45,15 @@ class RssProcessorTest {
         String htmlBodyResponse = new String (Files.readAllBytes(htmlFile.toPath()));
         stubFor(get(urlEqualTo("/until-we-reach-our-homeland")).willReturn(aResponse().withBody(htmlBodyResponse)));
         
-        ConfigFile configFileTest = ConfigFactory.create(ConfigFileTest.class, System.getProperties());
-    	new RssProcessor().processFeed(configFileTest);
+        ConfigFile cfgMock = mock(ConfigFile.class);
+        when(cfgMock.feedUrl()).thenReturn("http://localhost:8080/feed.xml");
+        
+        String dbFileConnection = "jdbc:sqlite:" + tempDir.toAbsolutePath().toString() + File.separator + "podbean.sqlite";
+        when(cfgMock.dbFileLocation()).thenReturn(dbFileConnection); 
+        
+    	new RssProcessor().processFeed(cfgMock);
     	
-    	Connection connection = DriverManager.getConnection(configFileTest.dbFileLocation());
+    	Connection connection = DriverManager.getConnection(dbFileConnection);
     	Statement statement = connection.createStatement();
     	ResultSet rs = statement.executeQuery("SELECT * FROM EPISODE WHERE TITLE = 'Until We Reach our Homeland';");
     	
