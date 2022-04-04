@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
@@ -13,16 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import org.aeonbits.owner.ConfigFactory;
-import org.aeonbits.owner.Config.DefaultValue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
-import com.rometools.rome.io.SyndFeedInput;
-import com.rometools.rome.io.XmlReader;
-
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
@@ -72,8 +66,6 @@ class RssProcessorTest {
     	while (rs.next()) {
     		titleFromDB = rs.getString("title");
 	    }
-    	
-    	System.out.println(titleFromDB);
     	
     	assertTrue(titleFromDB.contains("Until We Reach our Homeland"), "DB Check Failed");
     	

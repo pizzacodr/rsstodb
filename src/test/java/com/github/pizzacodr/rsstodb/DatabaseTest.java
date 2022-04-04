@@ -43,7 +43,6 @@ class DatabaseTest {
 		
 		
 		List<String> tblListfromQuery = new ArrayList<String>();
-		
 		rs = statement.executeQuery("pragma table_info ('episode');");
 		while (rs.next()) {
 			tblListfromQuery.add(rs.getString("name"));
