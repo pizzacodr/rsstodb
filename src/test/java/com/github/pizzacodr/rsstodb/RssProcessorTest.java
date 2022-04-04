@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,8 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.rometools.rome.io.FeedException;
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
@@ -27,15 +24,11 @@ class RssProcessorTest {
 	
 	private WireMockServer wireMockServer = new WireMockServer();
 	
-	@TempDir
-	static Path tempDir;
-	
 	interface ConfigFileTest extends ConfigFile {
 
 		@Override
 		@DefaultValue("http://localhost:8080/feed.xml")
 		public String feedUrl();
-		
 	}
 	
 	@Test
