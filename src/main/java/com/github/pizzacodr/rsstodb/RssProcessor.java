@@ -9,6 +9,7 @@ import java.net.http.HttpResponse;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,6 +40,10 @@ public class RssProcessor {
 
 		List<SyndEntry> entriesList = feed.getEntries();
 		for (SyndEntry eachEntry : entriesList) {
+			
+			UUID uuid = UUID.randomUUID();
+			logger.debug(uuid.toString());
+			episode.setUuid(uuid.toString());
 
 			String title = eachEntry.getTitle();
 			logger.debug(title);

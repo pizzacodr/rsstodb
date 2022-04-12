@@ -19,7 +19,7 @@ public class Database {
 		connection = DriverManager.getConnection(dbFileLocation);
 		Statement statement = connection.createStatement();
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS EPISODE (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-        		+ "TITLE TEXT, LINK TEXT, CONTENT TEXT, SHARELINK TEXT, DATE TEXT)");
+        		+ "UUID TEXT NOT NULL, TITLE TEXT, LINK TEXT, CONTENT TEXT, SHARELINK TEXT, DATE TEXT);");
 	}
 	
 	public boolean insertIntoEpisodeIfNew(Episode episode) throws SQLException {
@@ -36,12 +36,13 @@ public class Database {
 		
 		if (fetchSize == 0) {
 			
-			prepStm = connection.prepareStatement("INSERT INTO EPISODE VALUES(NULL, ?, ?, ?, ?, ?);");
-			prepStm.setString(1, episode.getTitle());
-			prepStm.setString(2, episode.getLink());
-			prepStm.setString(3, episode.getContent());
-			prepStm.setString(4, episode.getSharelink());
-			prepStm.setString(5, episode.getDate());
+			prepStm = connection.prepareStatement("INSERT INTO EPISODE VALUES(NULL, ?, ?, ?, ?, ?, ?);");
+			prepStm.setString(1, episode.getUuid());
+			prepStm.setString(2, episode.getTitle());
+			prepStm.setString(3, episode.getLink());
+			prepStm.setString(4, episode.getContent());
+			prepStm.setString(5, episode.getSharelink());
+			prepStm.setString(6, episode.getDate());
 			prepStm.executeUpdate();
 			
 	        logger.debug("Inserted into DB \n");
