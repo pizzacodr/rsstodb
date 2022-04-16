@@ -27,6 +27,7 @@ public class RssProcessor {
 	
 	private static Logger logger = LoggerFactory.getLogger(RssProcessor.class);
 
+	@SuppressWarnings("java:S2629")
 	public void processFeed(ConfigFile configFile) throws SQLException, IllegalArgumentException, FeedException, IOException, InterruptedException {
 		
 		Database database = new Database(configFile.dbFileLocation());
@@ -72,6 +73,7 @@ public class RssProcessor {
 		}
 	}
 	
+	@SuppressWarnings({"java:S2629", "java:S6019"})
 	private String retrieveShareLink(String link) throws IOException, InterruptedException {
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(link)).GET()

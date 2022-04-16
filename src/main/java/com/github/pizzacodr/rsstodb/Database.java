@@ -17,11 +17,13 @@ public class Database {
 	
 	public Database(String dbFileLocation) throws SQLException {
 		connection = DriverManager.getConnection(dbFileLocation);
-		Statement statement = connection.createStatement();
-        statement.executeUpdate("CREATE TABLE IF NOT EXISTS EPISODE (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-        		+ "UUID TEXT NOT NULL, TITLE TEXT, LINK TEXT, CONTENT TEXT, SHARELINK TEXT, DATE TEXT);");
+		try (Statement statement = connection.createStatement()) {
+	        statement.executeUpdate("CREATE TABLE IF NOT EXISTS EPISODE (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+	        		+ "UUID TEXT NOT NULL, TITLE TEXT, LINK TEXT, CONTENT TEXT, SHARELINK TEXT, DATE TEXT);");
+		}
 	}
 	
+	@SuppressWarnings("java:S2095")
 	public boolean insertIntoEpisodeIfNew(Episode episode) throws SQLException {
 		
 		PreparedStatement prepStm = connection.prepareStatement("SELECT COUNT(*) FROM EPISODE WHERE LINK = ?;");
@@ -30,7 +32,7 @@ public class Database {
 		
 		int fetchSize = 0;
 		while (rs.next()) {
-			logger.debug("ResultSet for Select statement: " + rs.getInt(1));
+			logger.debug("ResultSet for Select statement: {}", rs.getInt(1));
 			fetchSize = rs.getInt(1);
         }
 		
@@ -46,11 +48,11 @@ public class Database {
 			prepStm.executeUpdate();
 			
 	        logger.debug("Inserted into DB \n");
-	        
 		} else {
 			logger.debug("Skipped Insert \n");
 		}
         
+		prepStm.close();
         return fetchSize == 0;
 	}
 

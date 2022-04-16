@@ -50,13 +50,14 @@ class DatabaseTest {
 		
 		List<String> tblListProvided = new ArrayList<String>();
 		tblListProvided.add("ID");
+		tblListProvided.add("UUID");
 		tblListProvided.add("TITLE");
 		tblListProvided.add("LINK");
 		tblListProvided.add("CONTENT");
 		tblListProvided.add("SHARELINK");
 		tblListProvided.add("DATE");
 		
-		assertTrue(tblListfromQuery.equals(tblListProvided),"The columns in the Table DO NOT MATCH with expected columns from CREATE STM");	
+		assertEquals(tblListfromQuery, tblListProvided);
 	}
 
 	@Test
@@ -65,6 +66,7 @@ class DatabaseTest {
 		Database db = new Database(dbFileConnection);
 		
 		Episode testEpisode = new Episode();
+		testEpisode.setUuid("testUUID");
 		testEpisode.setContent("testContent");
 		testEpisode.setDate("testDate");
 		testEpisode.setLink("testLink");
