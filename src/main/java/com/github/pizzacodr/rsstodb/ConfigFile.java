@@ -3,8 +3,8 @@ package com.github.pizzacodr.rsstodb;
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.Config.Sources;
 
-@Sources({ "file:${user.dir}/configRSSToDB.properties", 
-"file:${user.home}/configRSSToDB.properties"})
+@Sources({ "file:${user.dir}/rsstodb.properties", 
+"file:${user.home}/rsstodb.properties"})
 
 public interface ConfigFile extends Config {
 	
