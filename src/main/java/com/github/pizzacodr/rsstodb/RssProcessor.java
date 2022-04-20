@@ -67,7 +67,7 @@ public class RssProcessor {
 				episode.setContent(contentWithoutTags);
 			}
 
-			if(database.insertIntoEpisodeIfNew(episode)) {
+			if(database.insertIntoEpisodeIfNew(episode) && (!configFile.fullyPopulateTbl())) {
 				break;
 			}
 		}

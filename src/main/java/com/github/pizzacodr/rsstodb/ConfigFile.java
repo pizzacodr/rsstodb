@@ -13,4 +13,7 @@ public interface ConfigFile extends Config {
 	
 	@DefaultValue("jdbc:sqlite:${user.home}/podbean.sqlite")
 	String dbFileLocation();
+	
+	@DefaultValue("false")
+	boolean fullyPopulateTbl();
 }
