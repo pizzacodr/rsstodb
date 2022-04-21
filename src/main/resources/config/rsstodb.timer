@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily mastodon rsstodb Timer
+Requires=mastodon-rsstodb.service
+
+[Timer]
+Unit=mastodon-rsstodb.service
+OnCalendar=*-*-* 14:00:00 America/New_York
+Persistent=true
+
+[Install]
+WantedBy=timers.target

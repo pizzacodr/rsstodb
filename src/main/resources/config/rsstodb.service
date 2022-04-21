@@ -1,0 +1,12 @@
+[Unit]
+Description=RSSToDB
+
+[Service]
+ExecStart=/usr/bin/java -Xms128m -Xmx256m -jar /opt/socialcrossposting/rsstodb-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+StandardOutput=file:/var/log/rsstodb.out.txt
+StandardError=file:/var/log/rsstodb.err.txt
+Type=simple
+WorkingDirectory=/opt/socialcrossposting
+
+[Install]
+WantedBy=multi-user.target
