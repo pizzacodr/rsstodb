@@ -81,13 +81,18 @@ public class RssProcessor {
 
 		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-		String pattern = "https://www.podbean.com/ew/.+?(?=\")";
+		String pattern = "https:\\\\u002F\\\\u002Fwww\\.podbean\\.com\\\\u002Few\\\\u002F.+?(?=\\\\)";
 		Pattern compiledPattern = Pattern.compile(pattern);
 		
 		Matcher m = compiledPattern.matcher(response.body());
 		if (m.find()) {
-			logger.debug(m.group(0));
-			return m.group(0);
+			
+			String resultFromRegex = m.group(0);
+			
+			String fixedSharedUrl = resultFromRegex.replace("\\u002F", "/");
+			logger.debug(fixedSharedUrl);
+			
+			return fixedSharedUrl;
 		} else {
 			logger.debug("NO MATCH for the share link");
 			throw new ShareLinkException("NO MATCH for the share link");
